@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="buddy.css" />
+  <title>Grafana Buddy</title>
+</head>
+<body>
+  <select id="outputFormat">
+    <option value="json">JSON</option>
+    <option value="csv">CSV</option>
+  </select>
+  <div id="exportButton">
+    <button>Export Annotations</button>
+  </div>
+  <div id="errorMessage" class="hidden">
+    <p>error getting annotations</p>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

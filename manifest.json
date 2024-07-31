@@ -1,0 +1,28 @@
+{
+  "manifest_version": 2,
+  "name": "Grafana Buddy",
+  "version": "1.0",
+  "description": "Export annotations from Grafana",
+    "icons": {
+    "48": "icons/stego_buddy_48.png",
+    "96": "icons/stego_buddy_96.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "downloads"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content_script.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
+}
