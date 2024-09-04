@@ -6,15 +6,12 @@ browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 });
 
 function exportAnnotations(format) {
-  // Extract dashboard ID from URL
-  let dashboardId = window.location.pathname.split('/').pop();
-
   // Get Grafana API URL from the current page
   let apiUrl = window.location.origin + '/api';
   console.log("Accessing API URL: " + apiUrl);
   console.log("content script - exportAnnotations - format: " + format);
 
-  fetch(`${apiUrl}/annotations?dashboardId=${dashboardId}`, {
+  fetch(`${apiUrl}/annotations`, {
     method: 'GET',
     credentials: 'include', // Send existing cookies with the request
     headers: {
