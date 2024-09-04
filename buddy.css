@@ -1,13 +1,14 @@
 html,
 body {
-  width: 200px;
+  font-family: sans-serif;
+  width: 300px;
 }
 
 .hidden {
   display: none;
 }
 
-button {
+form label, form button {
   /* border: none;
   width: 100%; */
   margin: 3% auto;
@@ -15,9 +16,11 @@ button {
   text-align: left;
   font-size: 1em;
   cursor: pointer;
+  font-family: sans-serif;
   background-color: #e5f2f2;
 }
 
 button:hover {
+  font-family: sans-serif;
   background-color: #cff2f2;
 }
