@@ -1,10 +1,13 @@
 // content_script.js
+//
+// Listen for messages from the background script and export annotations
 browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === "exportAnnotations") {
     exportAnnotations(request.format);
   }
 });
 
+// Export annotations from the current page and send them to the background script
 function exportAnnotations(format) {
   // Get Grafana API URL from the current page
   let apiUrl = window.location.origin + '/api';
@@ -24,7 +27,7 @@ function exportAnnotations(format) {
     }
     return response.json();
   })
-  .then(data => {
+  .then(data => { // Extract the annotations from the response
     //browser.runtime.sendMessage({action: "saveAnnotations", annotations: data});
     if (format === 'csv') {
       const csvData = convertToCSV(data);
@@ -41,10 +44,11 @@ function exportAnnotations(format) {
   });
 }
 
+// Convert each annotation to a CSV row and return the CSV data
 function convertToCSV(annotations) {
   const fields = ['id', 'dashboardId', 'panelId', 'time', 'timeEnd', 'text', 'tags'];
   let csv = fields.join(',') + "\n";
-  
+
   annotations.forEach(annotation => {
     let row = fields.map(field => {
       let value = annotation[field];

@@ -1,5 +1,6 @@
 // background.js
 
+// Get the current date and time and return a string in the format YYYY_MM_DD__HHMM
 function getCurrentDate() {
     const date = new Date();
     const year = date.getFullYear();
@@ -11,6 +12,7 @@ function getCurrentDate() {
     return `${year}_${month}_${day}__${hour}${min}`;
 }
 
+// Save the annotations to a file on the local machine in a JSON or CSV format
 function saveAnnotationsToFile(data, format) {
   console.log("background - saveAnnotationsToFile - format type: " + format + "\n");
   let blob, filename;
@@ -32,6 +34,7 @@ function saveAnnotationsToFile(data, format) {
   });
 }
 
+// Listen for messages from the content script
 browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.action === "saveAnnotations") {
     saveAnnotationsToFile(request.data, request.format);
